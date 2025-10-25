@@ -1,1 +1,696 @@
-�Z
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pol Valles Esteban - Sistemas Completos con IA a Medida</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --color-dark-blue: #1e3a8a;
+            --color-purple: #7c3aed;
+            --color-cyan: #06b6d4;
+            --color-text-light: #e2e8f0;
+            --color-text-dark: #cbd5e1;
+            --color-bg-dark: #0f172a;
+            --color-bg-gradient-start: #0f172a;
+            --color-bg-gradient-end: #1a2035;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--color-bg-gradient-start), var(--color-bg-gradient-end));
+            color: var(--color-text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 400px;
+            height: 400px;
+            background: rgba(var(--color-purple), 0.3);
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: -1;
+            animation: moveBlob1 15s infinite alternate ease-in-out;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -250px;
+            right: -250px;
+            width: 500px;
+            height: 500px;
+            background: rgba(var(--color-cyan), 0.3);
+            border-radius: 50%;
+            filter: blur(180px);
+            z-index: -1;
+            animation: moveBlob2 18s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveBlob1 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(100px, 150px) scale(1.1); opacity: 0.4; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+        }
+
+        @keyframes moveBlob2 {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(-120px, -180px) scale(1.05); opacity: 0.4; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            background: rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--color-text-light);
+            text-shadow: 0 0 10px rgba(var(--color-purple), 0.5);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 1.5rem;
+            background: linear-gradient(45deg, rgba(var(--color-dark-blue), 0.2), rgba(var(--color-purple), 0.2));
+            border-radius: 15px;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(var(--color-cyan), 0.1) 0%, transparent 70%);
+            animation: rotateLight 20s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes rotateLight {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            animation: slideInFromLeft 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-dark);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInFromRight 1s ease-out;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--color-purple), var(--color-cyan));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(var(--color-purple), 0.5);
+            animation: scaleUp 0.8s ease-out forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(var(--color-cyan), 0.6);
+        }
+
+        section {
+            padding: 4rem 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h3 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text-light);
+            position: relative;
+            padding-bottom: 1rem;
+            background: linear-gradient(90deg, var(--color-dark-blue), var(--color-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        h3::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+            border-radius: 2px;
+        }
+
+        .services-grid, .target-audience-grid, .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08); /* Fondo transparente */
+            backdrop-filter: blur(15px); /* Efecto Glass */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--color-text-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(var(--color-cyan), 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 1rem;
+        }
+
+        .process-steps .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .process-steps .card span {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--color-dark-blue), var(--color-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.08); /* Fondo transparente */
+            backdrop-filter: blur(15px); /* Efecto Glass */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--color-text-light);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-cyan);
+            box-shadow: 0 0 0 3px rgba(var(--color-cyan), 0.3);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            background: linear-gradient(45deg, var(--color-purple), var(--color-cyan));
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(var(--color-purple), 0.5);
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(var(--color-cyan), 0.6);
+        }
+
+        #form-message {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+        }
+
+        #form-message.success {
+            background-color: rgba(6, 182, 212, 0.2);
+            color: var(--color-cyan);
+            border: 1px solid var(--color-cyan);
+        }
+
+        #form-message.error {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--color-text-dark);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--color-text-light);
+            font-size: 1.8rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--color-cyan);
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Basic icon styles (replace with actual SVG or font icons) */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em;
+            /* Placeholder for SVG/FontAwesome */
+        }
+        .icon-instagram::before { content: "📸"; } /* Example placeholder */
+        .icon-mail::before { content: "📧"; } /* Example placeholder */
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .btn-cta {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            h3 {
+                font-size: 2rem;
+            }
+
+            .services-grid, .target-audience-grid, .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn-cta {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card h4 {
+                font-size: 1.5rem;
+            }
+
+            .process-steps .card span {
+                font-size: 2.5rem;
+            }
+
+            .social-links a {
+                font-size: 1.5rem;
+                margin: 0 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>polvallesia</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero is-visible">
+            <div class="container">
+                <h2>Sistemas Completos con IA a Medida</h2>
+                <p>Desde aplicaciones web hasta arquitecturas empresariales, transformamos tus ideas en soluciones inteligentes y eficientes.</p>
+                <a href="#contact" class="btn-cta">Solicita tu Tasación Gratuita</a>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h3>Mis Servicios</h3>
+                <div class="services-grid">
+                    <div class="card">
+                        <h4>Sistemas Completos</h4>
+                        <p>Desarrollo de aplicaciones web, SaaS, dashboards interactivos y soluciones a medida con integración de IA.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Arquitecturas a Medida</h4>
+                        <p>Diseño y construcción de backends robustos, APIs escalables y arquitecturas de microservicios eficientes.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Soluciones en la Nube</h4>
+                        <p>Implementación, despliegue y gestión de infraestructura en la nube para garantizar rendimiento y escalabilidad.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Automatizaciones Inteligentes</h4>
+                        <p>Creación de chatbots, workflows automatizados y sistemas de procesamiento de datos con IA para optimizar operaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="target-audience">
+            <div class="container">
+                <h3>¿Para Quién es Esto?</h3>
+                <div class="target-audience-grid">
+                    <div class="card">
+                        <h4>Pequeñas Empresas, Autónomos y PYMEs</h4>
+                        <p>Soluciones tecnológicas accesibles para impulsar su crecimiento y eficiencia.</p>
+                    </div>
+                    <div class="card">
+                        <h4>E-commerce</h4>
+                        <p>Optimización de plataformas, automatización de marketing y personalización con IA.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Negocios Tradicionales</h4>
+                        <p>Transformación digital, modernización de procesos y nuevas oportunidades con IA.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Servicios Profesionales</h4>
+                        <p>Herramientas inteligentes para mejorar la productividad y la calidad del servicio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <h3>Nuestro Proceso</h3>
+                <div class="process-steps">
+                    <div class="card">
+                        <span>1</span>
+                        <h4>Solicita Tasación</h4>
+                        <p>Comienza con una consulta gratuita para entender tus necesidades.</p>
+                    </div>
+                    <div class="card">
+                        <span>2</span>
+                        <h4>Análisis Detallado</h4>
+                        <p>Profundizamos en los requisitos y diseñamos la solución ideal.</p>
+                    </div>
+                    <div class="card">
+                        <span>3</span>
+                        <h4>Desarrollo Iterativo</h4>
+                        <p>Construimos tu sistema con metodologías ágiles y entregas continuas.</p>
+                    </div>
+                    <div class="card">
+                        <span>4</span>
+                        <h4>Implementación y Soporte</h4>
+                        <p>Lanzamos tu solución y te acompañamos en todo el camino.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h3>Hablemos de tu Proyecto</h3>
+                <form id="contact-form" class="contact-form">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="company">Empresa (opcional):</label>
+                    <input type="text" id="company" name="company">
+
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Enviar Mensaje</button>
+                    <div id="form-message" aria-live="polite"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pol Valles Esteban. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="mailto:polvallesss@gmail.com" target="_blank" aria-label="Email"><span class="icon icon-mail"></span></a>
+                <a href="https://www.instagram.com/ppolvalless" target="_blank" aria-label="Instagram"><span class="icon icon-instagram"></span></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+            const webhookUrl = 'https://n8n-n8n.hrzmi8.easypanel.host/webhook/portfolio';
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                formMessage.style.display = 'none'; // Ocultar mensaje anterior
+                formMessage.classList.remove('success', 'error'); // Limpiar clases
+
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    message: document.getElementById('message').value
+                };
+
+                try {
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+                        formMessage.classList.add('success');
+                        form.reset();
+                    } else {
+                        formMessage.textContent = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo.';
+                        formMessage.classList.add('error');
+                    }
+                } catch (error) {
+                    console.error('Error al enviar el formulario:', error);
+                    formMessage.textContent = 'Hubo un error de conexión. Por favor, inténtalo más tarde.';
+                    formMessage.classList.add('error');
+                } finally {
+                    formMessage.style.display = 'block';
+                }
+            });
+
+            // Intersection Observer for scroll animations
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                // Do not observe hero section as it's visible by default
+                if (!section.classList.contains('hero')) {
+                    observer.observe(section);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
