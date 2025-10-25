@@ -1,99 +1,154 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aixel - Automatiza tu Negocio con IA</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" type="image/png" href="img/logoOF.png">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pol Valles Esteban - Portfolio</title>
+    <style>
+        :root {
+            --color-primary: #1e3a8a;
+            --color-secondary: #7c3aed;
+            --color-accent: #06b6d4;
+            --text-light: #f3f4f6;
+            --text-dark: #111;
+            --bg-gradient: linear-gradient(-45deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:system-ui,Arial,sans-serif;color:var(--text-light);background:var(--bg-gradient);background-attachment:fixed;padding:2rem 0;}
+        h1,h2,h3{color:white;}
+        a{text-decoration:none;color:inherit;}
+        .section{max-width:1200px;margin:auto;padding:4rem 1rem;display:flex;flex-direction:column;align-items:center;gap:2rem;}
+        .hero{text-align:center;min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:1rem;}
+        .hero h1{font-size:3rem;line-height:1.2;}
+        .hero p{font-size:1.3rem;}
+        .cta{background:var(--color-accent);color:white;padding:0.75rem 1.5rem;border-radius:9999px;font-size:1rem;transition:background .3s;}
+        .cta:hover{background:white;color:var(--color-accent);}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;width:100%;}
+        .card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:1.5rem;color:white;backdrop-filter:blur(10px);}
+        .card h3{margin-top:0.5rem;}
+        .card p{margin-top:0.5rem;}
+        .process{display:flex;flex-direction:column;gap:1rem;width:100%;}
+        .process-step{background:rgba(255,255,255,.1);border-radius:8px;padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;color:white;backdrop-filter:blur(8px);}
+        .process-step span{font-weight:600;color:var(--color-accent);}
+        form{background:rgba(255,255,255,.1);border-radius:12px;padding:2rem;display:flex;flex-direction:column;gap:1rem;width:100%;max-width:600px;backdrop-filter:blur(10px);}
+        input,textarea{background:rgba(255,255,255,.2);border:none;padding:0.75rem;border-radius:8px;color:white;outline:none;font-size:1rem;}
+        textarea{resize:none;}
+        button{background:var(--color-accent);color:white;padding:0.75rem;border:none;border-radius:8px;font-size:1rem;cursor:pointer;transition:background .3s;}
+        button:hover{background:white;color:var(--color-accent);}
+        footer{background:rgba(0,0,0,.2);text-align:center;padding:1rem;margin-top:4rem;color:var(--text-light);font-size:.85rem;border-top:1px solid rgba(255,255,255,.2);}
+        .icons{display:flex;gap:1rem;justify-content:center;margin-top:.5rem;}
+        .icons a{color:white;font-size:1.5rem;display:flex;align-items:center;}
+        @media(max-width:600px){
+            .hero h1{font-size:2.2rem;}
+            .hero p{font-size:1.1rem;}
+        }
+        /* Scroll animations */
+        .animate{opacity:0;transform:translateY(30px);transition:all .6s ease-out;}
+        .animate.visible{opacity:1;transform:translateY(0);}   
+    </style>
 </head>
-
-<!-- Chat Widget 
-<div id="chat-widget">
-  <div id="chat-header">Autometa IA 🤖</div>
-  <div id="chat-messages"></div>
-  <div id="chat-input-area">
-    <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." />
-    <button id="chat-send">Enviar</button>
-  </div>
-</div>-->
-
-
 <body>
-  <div class="particles" id="particles"></div>
+    <section id="hero" class="section hero animate">
+        <h1>Sistemas Completos con IA a Medida</h1>
+        <p>Desde aplicaciones web hasta arquitecturas empresariales</p>
+        <button class="cta" id="cta">Solicita tu Tasación Gratuita</button>
+    </section>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <!--><a href="index.html" class="logo">Autometa IA</a>-->
-      <a href="index.html" class="logo">
-        <img src="img/logoOF.png" alt="Aixel Logo" class="logo-img">
-        Aixel
-      </a>
+    <section id="services" class="section animate">
+        <h2>Servicios</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Sistemas Completos</h3>
+                <p>Aplicaciones web, SaaS, dashboards</p>
+            </div>
+            <div class="card">
+                <h3>Arquitecturas a Medida</h3>
+                <p>Back‑end, APIs, microservicios</p>
+            </div>
+            <div class="card">
+                <h3>Soluciones en la Nube</h3>
+                <p>Deployment, infraestructura</p>
+            </div>
+            <div class="card">
+                <h3>Automatizaciones Inteligentes</h3>
+                <p>Chatbots, workflows, procesamiento de datos</p>
+            </div>
+        </div>
+    </section>
 
+    <section id="target" class="section animate">
+        <h2>Para quién</h2>
+        <ul>
+            <li>Pequeñas empresas, autónomos y PYMEs</li>
+            <li>Ecommerce, negocios tradicionales, servicios profesionales</li>
+        </ul>
+    </section>
 
-      <ul class="nav-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="consulta.html">Consulta</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-      </ul>
-      <a href="consulta.html" class="cta-button">Consulta Gratis</a>
-    </div>
-  </nav>
+    <section id="process" class="section animate">
+        <h2>Proceso</h2>
+        <div class="process">
+            <div class="process-step"><span>1.</span>Solicita Tasación</div>
+            <div class="process-step"><span>2.</span>Análisis</div>
+            <div class="process-step"><span>3.</span>Desarrollo</div>
+            <div class="process-step"><span>4.</span>Implementación</div>
+        </div>
+    </section>
 
-  <!-- Hero Section -->
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-      <div class="hero-icon"></div>
-      <h1>
-        Automatiza tu Negocio con
-        <span class="highlight">Inteligencia Artificial</span>
-      </h1>
-      <p>
-        Transformamos procesos manuales en sistemas inteligentes que trabajan 24/7.
-        Nuestros <strong>clientes</strong> ya han aumentado su productividad hasta un <strong style="color: #9333ea;">300%</strong>
-        con nuestras soluciones.
-      </p>
-      <div class="hero-buttons">
-        <a href="consulta.html" class="primary-btn">Agendar Llamada</a>
-        <a href="contacto.html" class="secondary-btn">Ver Contacto</a>
-      </div>
-    </div>
-  </section>
+    <section id="contact" class="section animate">
+        <h2>Contacto</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="company" placeholder="Empresa (opcional)">
+            <textarea name="message" rows="4" placeholder="Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+        <p id="formMessage"></p>
+    </section>
 
-  <section class="section" style="padding-top:5px; padding-bottom:40px;">
-  <h2>Prueba tu chatbot 🤖</h2>
-  <div id="chat-widget">
-    <div id="chat-header">Aixel Assitant 🤖</div>
-    <div id="chat-messages"></div>
-    <div id="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." />
-      <button id="chat-send">Enviar</button>
-    </div>
-  </div>
-  </section>
+    <footer>
+        <p>© 2025 Pol Valles Esteban. Todos los derechos reservados.</p>
+        <div class="icons">
+            <a href="mailto:polvallesss@gmail.com" aria-label="email">✉️</a>
+            <a href="https://instagram.com/ppolvalless" aria-label="instagram" target="_blank">📸</a>
+        </div>
+    </footer>
 
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        },{threshold:0.1});
+        document.querySelectorAll('.animate').forEach(el=>observer.observe(el));
 
+        // CTA scroll to contact form
+        document.getElementById('cta').addEventListener('click',()=>{
+            document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+        });
 
-  <!-- Stats Section -->
-  <section class="stats">
-    <div class="stat">
-      <span class="stat-number">50+</span>
-      <span class="stat-label">Empresas Automatizadas</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">300%</span>
-      <span class="stat-label">Aumento Productividad</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">24/7</span>
-      <span class="stat-label">Operación Continua</span>
-    </div>
-  </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="js/scripts.js"></script>
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit',function(e){
+            e.preventDefault();
+            const data = new FormData(this);
+            const payload = {
+                name: data.get('name'),
+                email: data.get('email'),
+                company: data.get('company'),
+                message: data.get('message')
+            };
+            fetch('https://n8n-n8n.hrzmi8.easypanel.host/webhook/portfolio',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify(payload)
+            })
+            .then(res=>res.ok?"¡Gracias! Mensaje enviado." : 'Error al enviar.')
+            .then(msg=>{document.getElementById('formMessage').textContent=msg;})
+            .catch(()=>{document.getElementById('formMessage').textContent='Error al enviar.';});
+            this.reset();
+        });
+    </script>
 </body>
 </html>
